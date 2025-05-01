@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/styles/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
     <title>Obra Track Teste</title>
 </head>
@@ -12,8 +13,6 @@
     <header>
         <nav class="navbar section-content">
             <a href="#" class="nav-logo">
-
-                <!-- <h2 class="logo-text">ObraTrack</h2> -->
                 <img src="src/images/logo.png" alt="" height="50">
             </a>
             <ul class="nav-menu">
@@ -23,19 +22,19 @@
                     <a href="#" class="nav-link">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Sobre Nós</a>
+                    <a href="#about" class="nav-link">Sobre Nós</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Relatórios</a>
+                    <a href="#report" class="nav-link">Relatórios</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Dúvidas</a>
+                    <a href="#questions" class="nav-link">Dúvidas</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Galeria</a>
+                    <a href="#gallery" class="nav-link">Galeria</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Contato</a>
+                    <a href="#contact" class="nav-link">Contato</a>
                 </li>
             </ul>
 
@@ -64,7 +63,7 @@
             </div>
         </section>
 
-        <section class="about-section">
+        <section class="about-section" id="about">
             <div class="section-content">
                 <div class="about-image-wrapper">
                     <img src="src/images/celular frente.png" alt="About" class="about-image" height="750">
@@ -93,7 +92,7 @@
             </div>
         </section>
 
-        <section class="report-section">
+        <section class="report-section" id="report">
             <h2 class="section-title">Nossas Páginas</h2>
             <div class="section-content">
                 <ul class="report-list">
@@ -149,8 +148,145 @@
             </div>
         </section>
 
+        <section class="question-section" id="questions">
+            <h2 class="section-title">Dúvidas</h2>
+            <div class="section-content">
+                <div class="slider-container swiper">
+                    <div class="slider-wrapper">
+                        <ul class="question-list swiper-wrapper">
+                            <li class="question swiper-slide">
+                                <img src="src/images/user_image.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Vitória Preterotto</h3>
+                                <i class="feedback">"O maior desafio desse projeto foi o banco de dados:
+                                    Fazer relações entre todas as tabelas e deixar tudo conectado. Trazer
+                                    os de uma página para a outra, também foi complicado, pois é necessário
+                                    fazer a relação correta." </i>
+                            </li>
+                            <li class="question swiper-slide">
+                                <img src="src/images/user_image.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Eduardo Falico</h3>
+                                <i class="feedback">"O maior desafio desse projeto foi o banco de dados:
+                                    Fazer relações entre todas as tabelas e deixar tudo conectado. Trazer
+                                    os de uma página para a outra, também foi complicado, pois é necessário
+                                    fazer a relação correta." </i>
+                            </li>
+                            <li class="question swiper-slide">
+                                <img src="src/images/user_image.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Isabelle Martins</h3>
+                                <i class="feedback">"O maior desafio desse projeto foi o banco de dados:
+                                    Fazer relações entre todas as tabelas e deixar tudo conectado. Trazer
+                                    os de uma página para a outra, também foi complicado, pois é necessário
+                                    fazer a relação correta." </i>
+                            </li>
+                            <li class="question swiper-slide">
+                                <img src="src/images/user_image.jpeg" alt="User" class="user-image">
+                                <h3 class="name">Vitória Preterotto</h3>
+                                <i class="feedback">"O maior desafio desse projeto foi o banco de dados:
+                                    Fazer relações entre todas as tabelas e deixar tudo conectado. Trazer
+                                    os de uma página para a outra, também foi complicado, pois é necessário
+                                    fazer a relação correta." </i>
+                            </li>
+                        </ul>
 
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-slide-button swiper-button-prev"></div>
+                        <div class="swiper-slide-button swiper-button-next"></div>
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+            <h2 class="section-title">Galeria</h2>
+            <div class="section-content">
+                <ul class="gallery-list">
+                    <li class="gallery-item">
+                        <img src="src/images/galeria-01.png" alt="Gallery" class="gallery-image" >
+                    </li>
+                    <li class="gallery-item">
+                        <img src="src/images/galeria-02.png" alt="Gallery" class="gallery-image" >
+                    </li>
+                    <li class="gallery-item">
+                        <img src="src/images/galeria-03.png" alt="Gallery" class="gallery-image">
+                    </li>
+                    <li class="gallery-item">
+                        <img src="src/images/galeria-04.png" alt="Gallery" class="gallery-image">
+                    </li>
+                    <li class="gallery-item">
+                        <img src="src/images/galeria-05.png" alt="Gallery" class="gallery-image">
+                    </li>
+                    <li class="gallery-item">
+                        <img src="src/images/galeria-06.png" alt="Gallery" class="gallery-image">
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">Contato</h2>
+            <div class="section-content">
+                <ul class="contact-info-list">
+                    <li class="contact-info">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                        <p>Rua Vicente Magaglio, 50 - Jardim Paulista I, 
+                            Jundiaí - SP, 13208-283</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>obratrack46@gmail.com</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+55 (19) 99718-8715</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-clock"></i>
+                        <p>Segunda-feira - Sexta-feira: 8:00 AM - 17:00 PM</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-clock"></i>
+                        <p>Sábados e Domingos: Fechado</p>
+                    </li>
+                    <li class="contact-info">
+                        <i class="fa-solid fa-globe"></i>
+                        <p>www.bubble.io</p>
+                    </li>
+                </ul>
+
+                <form action="#" class="contact-form">
+                    <input type="text" placeholder="Seu nome" class="form-input" required>
+                    <input type="email" placeholder="Seu e-mail" class="form-input" required>
+                    <textarea placeholder="Sua mensagem" class="form-input" required></textarea>
+                    <button class="submit-button">Enviar</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer-section">
+            <div class="section-content">
+                <p class="copyright-text">© 2025 Obra Track</p>
+                <div class="icon-social-media">
+                    <a href="#" class="social-link">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                </div>
+                <p class="policy-text">
+                    <a href="#" class="policy-link">Política de privacidade</a>
+                    <span class="separator">☆</span>
+                    <a href="#" class="policy-link">Política de licença</a>
+                </p>
+            </div>
+        </footer>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script src="src/script.js"></script>
 </body>
