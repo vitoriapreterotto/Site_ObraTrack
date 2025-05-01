@@ -230,6 +230,59 @@ header .navbar {
     color: var(--primary-color);
 }
 
+.report-section {
+    color: var(--white-color);
+    background-color: #422b1e;
+    padding: 50px 0 100px;
+}
+
+.report-section .report-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 110px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.report-section .report-list .report-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(100% /3 - 110px);
+}
+
+.report-section .report-list .report-item .report-image {
+    max-width: 75%;
+    margin-bottom: 15px;
+    object-fit: contain;
+}
+
+.report-section .report-list .report-item .text {
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-normal);
+    padding-top: 20px;
+}
+
+.report-section .report-list .report-item .name {
+    margin: 12px 0;
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-semibold);
+}
+
+
+
+@media screen and (max-width: 1024px) {
+
+    .report-section .report-list {
+        gap: 60px;
+    }
+    .report-section .report-list .report-item {
+        width: calc(100% /3 - 60px);
+    }
+}
+
 @media screen and (max-width: 900px) {
     :root {
         --font-size-m: 1rem;
