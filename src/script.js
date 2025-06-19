@@ -1,114 +1,96 @@
-function openLightbox(src) {
-    const lightboxImg = document.getElementById('lightbox-img');
-    lightboxImg.src = src;
-    const lightbox = document.getElementById('lightbox');
-    lightbox.style.display = 'flex';
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderContainer = document.querySelector('.slider-container');
+    const sliderWrapper = document.querySelector('.slider-wrapper');
+    const slides = document.querySelectorAll('.slider-wrapper img');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const dotsContainer = document.querySelector('.dots');
 
-    // Fade-in effect
-    lightbox.style.opacity = 0;
-    lightboxImg.style.opacity = 0;
-    let opacity = 0;
-    const fadeIn = setInterval(() => {
-        if (opacity >= 1) {
-            clearInterval(fadeIn);
-        }
-        lightbox.style.opacity = opacity;
-        lightboxImg.style.opacity = opacity;
-        opacity += 0.1; // Adjust for speed (smaller = slower)
-    }, 10); // Interval in milliseconds
-}
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let intervalId;
+    const intervalTime = 3000; // Intervalo de 3 segundos
 
-function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-
-    let opacity = 1;
-    const fadeOutInterval = 20; // Interval in milliseconds (adjust for speed)
-    const fadeOutStep = 0.1;   // Opacity change per interval (adjust for smoothness)
-    const fadeOut = setInterval(() => {
-        opacity -= fadeOutStep;
-        if (opacity <= 0) {
-            clearInterval(fadeOut);
-            lightbox.style.display = 'none';
-        } else {
-            lightbox.style.opacity = opacity;
-            lightboxImg.style.opacity = opacity;
-        }
-    }, fadeOutInterval);
-}
-
-const navLinks = document.querySelectorAll(".nav-menu .nav-link");
-const menuOpenButton = document.querySelector("#menu-open-button");
-const menuCloseButton = document.querySelector("#menu-close-button");
-
-menuOpenButton.addEventListener("click", () => {
-    document.body.classList.toggle("show-mobile-menu");
-});
-
-menuCloseButton.addEventListener("click", () => menuOpenButton.click());
-
-navLinks.forEach(link => {
-    link.addEventListener("click", () => menuOpenButton.click());
-});
-
-const swiper = new Swiper('.slider-wrapper', {
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 25,
-
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-      dynamicBullets: true,
-    },
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-    breakpoints: {
-        0: {
-            slidesPerView: 1
-        },
-        768: {
-            slidesPerView: 2
-        },
-        1024: {
-            slidesPerView: 3
-        },
+    // Ajusta dinamicamente a largura do wrapper e das imagens
+    function adjustSizes() {
+        sliderWrapper.style.width = `${totalSlides * 100}%`;
+        slides.forEach(slide => slide.style.width = `${100 / totalSlides}%`);
     }
+
+    // Cria os indicadores (bolinhas)
+    function createDots() {
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('button');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        updateDots();
+    }
+
+    // Atualiza o estado ativo dos indicadores
+    function updateDots() {
+        const dots = document.querySelectorAll('.dots button');
+        dots.forEach((dot, index) => {
+            dot.classList.remove('active');
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            }
+        });
+    }
+
+    // Função para ir para um slide específico
+    function goToSlide(index) {
+        if (index >= totalSlides) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalSlides - 1;
+        } else {
+            currentIndex = index;
+        }
+        updateSlider();
+        updateDots();
+        resetInterval();
+    }
+
+    // Função para avançar para o próximo slide
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+
+    // Função para voltar para o slide anterior
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+
+    // Atualiza a posição do slider
+    function updateSlider() {
+        sliderWrapper.style.transform = `translateX(-${currentIndex * (100 / totalSlides)}%)`;
+    }
+
+    // Inicia o intervalo automático
+    function startInterval() {
+        intervalId = setInterval(nextSlide, intervalTime);
+    }
+
+    // Limpa e reinicia o intervalo automático
+    function resetInterval() {
+        clearInterval(intervalId);
+        startInterval();
+    }
+
+    // Event listeners para os botões de navegação
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+
+    // Inicialização
+    adjustSizes();
+    createDots();
+    startInterval();
+
+    // Garante que o slider se ajuste em caso de redimensionamento da janela
+    window.addEventListener('resize', adjustSizes);
 });
-
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-
-    const formData = {
-        name: name,
-        email: email,
-        message: message
-    };
-
-    fetch('http://127.0.0.1:5500/send_email.php', { // **ATENÇÃO:** Ajuste a porta se necessário
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(data => {
-        console.log(data); // **ADICIONE ISSO**
-        alert(data);
-        document.getElementById('contactForm').reset();
-    })
-
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Ocorreu um erro ao enviar sua mensagem.');
-    });
-});
-
